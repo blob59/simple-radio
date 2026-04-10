@@ -11,7 +11,7 @@ List<RadioModel> getStations() {
         photo: "https://www.105.net/favicon.ico",
       ),
       RadioModel(
-        name: "Radio Italia",
+        name: "Franco Radio Italia",
         url: "https://icecast.radioitaliasmi.it/radioitalia.mp3",
         photo: "https://www.radioitalia.it/favicon.ico",
       ),
