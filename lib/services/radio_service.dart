@@ -1,29 +1,29 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:http/http.dart' as http;
-
-import '../models/radio_model.dart';
-import '../utilities/config.dart';
-
-class RadioService {
-  Future<List<RadioModel>> fetchRadios() async {
-    final response = await http.get(
-      Uri.parse(Config.apiUrl),
-      headers: {
-        HttpHeaders.acceptCharsetHeader: 'utf-8',
-        HttpHeaders.acceptHeader: 'application/json',
-        HttpHeaders.contentEncodingHeader: 'utf-8',
-        HttpHeaders.acceptEncodingHeader: 'gzip',
-      },
-    );
-
-    if (response.statusCode == HttpStatus.ok) {
-      final List jsonResponse = json.decode(response.body);
-      // ignore: unnecessary_lambdas
-      return jsonResponse.map((radio) => RadioModel.fromJson(radio)).toList();
-    } else {
-      throw Exception('Failed to load radios');
-    }
+List<RadioModel> getStations() {
+    return [
+      RadioModel(
+        name: "Radio Deejay",
+        url: "https://22553.live.streamtheworld.com/DEEJAY.mp3",
+        photo: "https://www.deejay.it/favicon.ico",
+      ),
+      RadioModel(
+        name: "Radio 105",
+        url: "https://icecast.unitedradio.it/Radio105.mp3",
+        photo: "https://www.105.net/favicon.ico",
+      ),
+      RadioModel(
+        name: "Radio Italia",
+        url: "https://icecast.radioitaliasmi.it/radioitalia.mp3",
+        photo: "https://www.radioitalia.it/favicon.ico",
+      ),
+      RadioModel(
+        name: "RTL 102.5",
+        url: "https://shoutcast.rtl.it:8000/stream/1/",
+        photo: "https://www.rtl.it/favicon.ico",
+      ),
+      RadioModel(
+        name: "RDS",
+        url: "https://rds.fluidstream.eu/rds.mp3",
+        photo: "https://www.rds.it/favicon.ico",
+      ),
+    ];
   }
-}
